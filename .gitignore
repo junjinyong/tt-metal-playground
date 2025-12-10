@@ -39,3 +39,6 @@
 
 # debug information files
 *.dwo
+
+# added by junjinyong on 25.12.10
+build/
