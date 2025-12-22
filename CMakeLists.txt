@@ -36,6 +36,7 @@ include_directories(${CMAKE_SOURCE_DIR})
 
 # Add subdirectories
 add_subdirectory(dram_loopback)
+add_subdirectory(dummy)
 
 # Add tt-lock library (required)
 add_library(tt_lock SHARED IMPORTED)
@@ -49,5 +50,6 @@ add_executable(main main.cpp)
 target_link_libraries(
     main
     dram_loopback
+    dummy
     tt_lock
 )
