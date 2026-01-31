@@ -69,6 +69,9 @@ int main(int argc, char* argv[]) {
     constexpr uint32_t elements_per_tile = tt::constants::TILE_WIDTH * tt::constants::TILE_HEIGHT;
     constexpr uint32_t tile_size_bytes = sizeof(bfloat16) * elements_per_tile;
     constexpr uint32_t dram_buffer_size = tile_size_bytes * num_tiles;
+    if (tt::constants::TILE_WIDTH != 32 || tt::constants::TILE_HEIGHT != 32) {
+        throw std::runtime_error("Tile size should be 32 x 32");
+    }
 
     // On-chip Buffer Allocation
     tt::tt_metal::distributed::DeviceLocalBufferConfig l1_config {

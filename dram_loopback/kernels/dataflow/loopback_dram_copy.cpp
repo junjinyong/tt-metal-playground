@@ -1,7 +1,5 @@
 #include <cstdint>
 
-#include "dataflow_api.h"
-
 void kernel_main() {
     std::uint32_t l1_buffer_addr        = get_arg_val<uint32_t>(0);
     std::uint32_t dram_buffer_src_addr  = get_arg_val<uint32_t>(1);
@@ -16,7 +14,7 @@ void kernel_main() {
     constexpr auto out0_args = TensorAccessorArgs<in0_args.next_compile_time_args_offset()>();
     const auto out0 = TensorAccessor(out0_args, dram_buffer_dst_addr, tile_size_bytes);
 
-    for(uint32_t i=0;i<num_tiles;i++) {
+    for(uint32_t i = 0; i < num_tiles; ++i) {
         noc_async_read_tile(i, in0, l1_buffer_addr);
         noc_async_read_barrier();
 
