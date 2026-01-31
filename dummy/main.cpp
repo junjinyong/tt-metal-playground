@@ -21,13 +21,14 @@ extern "C" void tt_lock_cleanup();
 int main(int argc, char* argv[]) {
     // Suppress TT-Metal device info/warning messages
     tt::umd::logging::set_level(tt::umd::logging::level::error);
-    // tt::umd::logging::set_level(tt::umd::logging::level::debug);
 
     // Initialize TT-Lock (acquire device locks)
     tt_lock_init();
     std::cout << "TT-Lock: Device locking enabled" << std::endl;
     
-    std::cout << "\033[0;31m" << "Hello, World!" << std::endl << "Number of Devices: " << tt::tt_metal::GetNumAvailableDevices() << "\033[0m" << std::endl;
+    std::cout << "\033[0;31m" << "Hello, World!" << "\033[0m" << std::endl;
+    std::cout << "\033[0;31m" << "Number of Devices: " << tt::tt_metal::GetNumAvailableDevices() << "\033[0m" << std::endl;
+    std::cout << "\033[0;31m" << "Number of PCIe Devices: " << tt::tt_metal::GetNumPCIeDevices() << "\033[0m" << std::endl;
 
     // Clean up and release device locks
     tt_lock_cleanup();
